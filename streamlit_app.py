@@ -10,7 +10,7 @@ for x in range(WIDTH):
   st.selectbox(
     label = 'terrain', 
     options = ['⛰️'], 
-    index=0, 
+    index=x, 
     # format_func=special_internal_function, 
     # key=None, 
     # help=None, 
