@@ -11,8 +11,7 @@ HEIGHT = 7
 COSTS  = OrderedDict({ '🌾': 1, '🌲': 3, '⛰': 5, '🐊': 7})
 MOVES = [(-1,0),(0,-1),(1,0),(0,1)]
 
-TERRAIN_OPTIONS = COSTS.keys()
-
+#small world is the default map
 small_world = [
     ['🌾', '🌲', '🌲', '🌲', '🌲', '🌲', '🌲'],
     ['🌾', '🌲', '🌲', '🌲', '🌲', '🌲', '🌲'],
@@ -23,16 +22,15 @@ small_world = [
     ['🌲', '🌲', '🌲', '🌲', '🌲', '🌲', '🌾']
 ]
 
-columns = st.columns(WIDTH)
-
 #grid selection
+columns = st.columns(WIDTH)
 for x, col in enumerate(columns):
     with col:
         for y in range(HEIGHT):
             st.selectbox(
               label = f'({x},{y})', 
-              options = TERRAIN_OPTIONS, 
-              index=0, 
+              options = COSTS.keys(), 
+              index = COSTS.keys().index(small_world[x][y]), 
               # format_func=special_internal_function, 
               key=str(x)+str(y), 
               # help=None, 
