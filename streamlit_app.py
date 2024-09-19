@@ -22,6 +22,10 @@ small_world = [
     ['🌲', '🌲', '🌲', '🌲', '🌲', '🌲', '🌾']
 ]
 
+#start and finish
+start = st.text_input("Starting Position", "0,0")
+end = st.text_input("End Position", f"{WIDTH}, {HEIGHT}")
+
 #grid selection
 columns = st.columns(WIDTH)
 for x, col in enumerate(columns):
