@@ -10,7 +10,7 @@ TERRAIN_OPTIONS = ['⛰️']
 columns = st.columns(WIDTH)
 
 for col in columns:
-  with col1:
+  with col:
       st.selectbox(
         label = 'terrain', 
         options = TERRAIN_OPTIONS, 
