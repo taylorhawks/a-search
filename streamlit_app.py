@@ -1,5 +1,4 @@
 import streamlit as st
-from collections import OrderedDict
 
 st.title('A* Search')
 st.header('Taylor Hawks')
