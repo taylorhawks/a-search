@@ -9,6 +9,7 @@ TERRAIN_OPTIONS = ['⛰️']
 
 columns = st.columns(WIDTH)
 
+#grid selection
 for x, col in enumerate(columns):
     with col:
         for y in range(HEIGHT):
@@ -26,4 +27,7 @@ for x, col in enumerate(columns):
               disabled=False, 
               label_visibility="visible"
             )
+
+#make the search happen
+st.button('A* Search')
   
