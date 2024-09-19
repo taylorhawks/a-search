@@ -14,7 +14,7 @@ for x, col in enumerate(columns):
       st.selectbox(
         label = 'terrain', 
         options = TERRAIN_OPTIONS, 
-        index=x, 
+        index=0, 
         # format_func=special_internal_function, 
         key=str(x), 
         # help=None, 
