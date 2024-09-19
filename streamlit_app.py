@@ -11,7 +11,7 @@ columns = st.columns(WIDTH)
 
 for x, col in enumerate(columns):
     with col:
-        for y in range(len(HEIGHT)):
+        for y in range(HEIGHT):
             st.selectbox(
               label = f'({x},{y})', 
               options = TERRAIN_OPTIONS, 
