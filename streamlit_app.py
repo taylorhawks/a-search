@@ -57,6 +57,5 @@ with placeholder.form("Map Parameters"):
     submitted = st.form_submit_button('A* Search')
 
     if submitted:
-        placeholder.empty()
         st.write("Searched.")
   
