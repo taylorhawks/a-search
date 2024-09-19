@@ -1,4 +1,5 @@
 import streamlit as st
+from typing import List, Tuple, Dict, Callable
 
 st.title('A* Search')
 st.header('Taylor Hawks')
@@ -24,10 +25,18 @@ small_world = [
 
 user_defined_map = [[None for x in range(WIDTH)] for y in range(HEIGHT)]
 
-# https://discuss.streamlit.io/t/delete-remove-from-app-screen-streamlit-form-st-form-after-feeling/25041/3
-placeholder = st.empty()
+# search functions
 
-with placeholder.form("Map Parameters"):
+if 'search_path' not in st.session_state:
+    st.session_state.search_path = user_defined_map
+
+def do_path():
+    st.session_state = small_world
+
+
+# form
+
+with st.form("Map Parameters"):
 
     #start and finish
     start = st.text_input("Starting Position (comma separated)", "0,0").split(",")
@@ -54,8 +63,6 @@ with placeholder.form("Map Parameters"):
                 )
     
     #make the search happen
-    submitted = st.form_submit_button('A* Search')
-
-    if submitted:
-        st.write("Searched.")
-  
+    submitted = st.form_submit_button('A* Search', on_click = do_path)
+    
+  st.write(f"Path Output: {test_number}")
