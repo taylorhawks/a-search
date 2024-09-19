@@ -31,7 +31,7 @@ if 'search_path' not in st.session_state:
     st.session_state['search_path'] = user_defined_map
 
 def do_path():
-    st.session_state['search_path'] = small_world
+    st.session_state.search_path = small_world
 
 
 # form
@@ -65,4 +65,4 @@ with st.form("Map Parameters"):
     #make the search happen
     submitted = st.form_submit_button('A* Search', on_click = do_path)
     
-st.write(st.session_state.search_path)
+# st.write(st.session_state.search_path)
