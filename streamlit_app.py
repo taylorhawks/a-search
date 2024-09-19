@@ -22,7 +22,12 @@ small_world = [
     ['🌲', '🌲', '🌲', '🌲', '🌲', '🌲', '🌾']
 ]
 
-with st.form("Map Parameters"):
+user_defined_map = [[None for x in range(WIDTH)] for y in range(HEIGHT)]
+
+# https://discuss.streamlit.io/t/delete-remove-from-app-screen-streamlit-form-st-form-after-feeling/25041/3
+placeholder = st.empty()
+
+with placeholder.form("Map Parameters"):
 
     #start and finish
     start = st.text_input("Starting Position (comma separated)", "0,0").split(",")
@@ -33,7 +38,7 @@ with st.form("Map Parameters"):
     for x, col in enumerate(columns):
         with col:
             for y in range(HEIGHT):
-                st.selectbox(
+                user_defined_map[x][y] = st.selectbox(
                   label = f'({x},{y})', 
                   options = TERRAIN_OPTIONS, 
                   index = TERRAIN_OPTIONS.index(small_world[x][y]), 
