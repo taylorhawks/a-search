@@ -30,6 +30,9 @@ user_defined_map = [[None for x in range(WIDTH)] for y in range(HEIGHT)]
 # if 'search_path' not in st.session_state:
 #     st.session_state['search_path'] = 1
 
+def change_map(x,y):
+    user_defined_map(x,y) = 
+
 # st.write(st.session_state)
 def do_path():
     pass
