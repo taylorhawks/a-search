@@ -28,7 +28,7 @@ user_defined_map = [[None for x in range(WIDTH)] for y in range(HEIGHT)]
 # search functions
 
 if 'search_path' not in st.session_state:
-    st.session_state['astar_search_path'] = user_defined_map
+    st.session_state.search_path = user_defined_map
 
 # def do_path():
 #     st.session_state.search_path = small_world
