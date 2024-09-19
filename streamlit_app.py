@@ -12,7 +12,7 @@ columns = st.columns(WIDTH)
 for x, col in enumerate(columns):
   with col:
       st.selectbox(
-        # label = 'terrain', 
+        label = 'terrain', 
         options = TERRAIN_OPTIONS, 
         index=x, 
         # format_func=special_internal_function, 
