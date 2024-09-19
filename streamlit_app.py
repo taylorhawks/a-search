@@ -22,30 +22,35 @@ small_world = [
     ['🌲', '🌲', '🌲', '🌲', '🌲', '🌲', '🌾']
 ]
 
-#start and finish
-start = st.text_input("Starting Position (comma separated)", "0,0").split(",")
-end = st.text_input("End Position (comma separated)", f"{WIDTH}, {HEIGHT}").split(",")
+with st.form("Map Parameters"):
 
-#grid selection
-columns = st.columns(WIDTH)
-for x, col in enumerate(columns):
-    with col:
-        for y in range(HEIGHT):
-            st.selectbox(
-              label = f'({x},{y})', 
-              options = TERRAIN_OPTIONS, 
-              index = TERRAIN_OPTIONS.index(small_world[x][y]), 
-              # format_func=special_internal_function, 
-              key=str(x)+str(y), 
-              # help=None, 
-              # on_change=None, 
-              # args=None, 
-              # kwargs=None, *, 
-              placeholder="Choose an option", 
-              disabled=False, 
-              label_visibility="visible"
-            )
+    #start and finish
+    start = st.text_input("Starting Position (comma separated)", "0,0").split(",")
+    end = st.text_input("End Position (comma separated)", f"{WIDTH}, {HEIGHT}").split(",")
+    
+    #grid selection
+    columns = st.columns(WIDTH)
+    for x, col in enumerate(columns):
+        with col:
+            for y in range(HEIGHT):
+                st.selectbox(
+                  label = f'({x},{y})', 
+                  options = TERRAIN_OPTIONS, 
+                  index = TERRAIN_OPTIONS.index(small_world[x][y]), 
+                  # format_func=special_internal_function, 
+                  key=str(x)+str(y), 
+                  # help=None, 
+                  # on_change=None, 
+                  # args=None, 
+                  # kwargs=None, *, 
+                  placeholder="Choose an option", 
+                  disabled=False, 
+                  label_visibility="visible"
+                )
+    
+    #make the search happen
+    submitted = st.form_submit_button('A* Search')
 
-#make the search happen
-st.button('A* Search')
+    if submitted:
+        st.write("Searched.")
   
