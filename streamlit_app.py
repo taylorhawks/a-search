@@ -23,8 +23,8 @@ small_world = [
 ]
 
 #start and finish
-start = st.text_input("Starting Position", "0,0")
-end = st.text_input("End Position", f"{WIDTH}, {HEIGHT}")
+start = st.text_input("Starting Position (comma separated)", "0,0").split(",")
+end = st.text_input("End Position (comma separated)", f"{WIDTH}, {HEIGHT}").split(",")
 
 #grid selection
 columns = st.columns(WIDTH)
