@@ -10,19 +10,20 @@ TERRAIN_OPTIONS = ['⛰️']
 columns = st.columns(WIDTH)
 
 for x, col in enumerate(columns):
-  with col:
-      st.selectbox(
-        label = 'terrain', 
-        options = TERRAIN_OPTIONS, 
-        index=0, 
-        # format_func=special_internal_function, 
-        key=str(x), 
-        # help=None, 
-        # on_change=None, 
-        # args=None, 
-        # kwargs=None, *, 
-        placeholder="Choose an option", 
-        disabled=False, 
-        label_visibility="visible"
-  )
+  for y in range(len(HEIGHT)):
+    with col:
+        st.selectbox(
+          label = f'({x},{y})', 
+          options = TERRAIN_OPTIONS, 
+          index=0, 
+          # format_func=special_internal_function, 
+          key=str(x)+str(y), 
+          # help=None, 
+          # on_change=None, 
+          # args=None, 
+          # kwargs=None, *, 
+          placeholder="Choose an option", 
+          disabled=False, 
+          label_visibility="visible"
+    )
   
