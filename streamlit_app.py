@@ -3,8 +3,8 @@ import streamlit as st
 st.title('A* Search')
 st.header('Taylor Hawks')
 
-WIDTH = 10
-HEIGHT = 10
+WIDTH = 8
+HEIGHT = 8
 TERRAIN_OPTIONS = ['⛰️']
 
 columns = st.columns(WIDTH)
@@ -12,7 +12,7 @@ columns = st.columns(WIDTH)
 for x, col in enumerate(columns):
   with col:
       st.selectbox(
-        label = 'terrain', 
+        # label = 'terrain', 
         options = TERRAIN_OPTIONS, 
         index=x, 
         # format_func=special_internal_function, 
