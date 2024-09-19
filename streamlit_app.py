@@ -8,8 +8,9 @@ WIDTH = 7
 HEIGHT = 7
 
 #global vars
-COSTS  = OrderedDict({ '🌾': 1, '🌲': 3, '⛰': 5, '🐊': 7})
+COSTS  = { '🌾': 1, '🌲': 3, '⛰': 5, '🐊': 7}
 MOVES = [(-1,0),(0,-1),(1,0),(0,1)]
+TERRAIN_OPTIONS = list(COSTS.keys())
 
 #small world is the default map
 small_world = [
@@ -29,8 +30,8 @@ for x, col in enumerate(columns):
         for y in range(HEIGHT):
             st.selectbox(
               label = f'({x},{y})', 
-              options = COSTS.keys(), 
-              index = COSTS.keys().index(small_world[x][y]), 
+              options = TERRAIN_OPTIONS, 
+              index = TERRAIN_OPTIONS.index(small_world[x][y]), 
               # format_func=special_internal_function, 
               key=str(x)+str(y), 
               # help=None, 
