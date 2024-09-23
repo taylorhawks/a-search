@@ -11,6 +11,7 @@ HEIGHT = 7
 COSTS  = { '🌾': 1, '🌲': 3, '⛰': 5, '🐊': 7}
 MOVES = [(-1,0),(0,-1),(1,0),(0,1)]
 TERRAIN_OPTIONS = list(COSTS.keys())
+HEURISTIC_OPTIONS = ['Next Move', 'Manhattan Distance', 'Euclidean Distance']
 
 #small world is the default map
 small_world = [
@@ -25,25 +26,31 @@ small_world = [
 
 user_defined_map = [[None for x in range(WIDTH)] for y in range(HEIGHT)]
 
-# search functions
+def render_map():
+    for row in user_defined_map:
+        st.write(''.join(row))
 
-# if 'search_path' not in st.session_state:
-#     st.session_state['search_path'] = 1
-
-def change_map(x,y,val):
-    user_defined_map[y][x] = val
-
-# st.write(st.session_state)
 def do_path():
     pass
-
-# form
 
 with st.form("Map Parameters"):
 
     #start and finish
     start = st.text_input("Starting Position (comma separated)", "0,0").split(",")
+
+    start_x = int(start[1].strip())
+    start_y = int(start[0].strip())
+    
     end = st.text_input("End Position (comma separated)", f"{WIDTH}, {HEIGHT}").split(",")
+
+    end_x = int(end[1].strip())
+    end_y = int(end[0].strip())
+    
+    heuristic = st.selectbox(
+        label = 'heuristic',
+        option = heuristic_options,
+        index = 1
+    )
     
     #grid selection
     columns = st.columns(WIDTH)
@@ -68,5 +75,4 @@ with st.form("Map Parameters"):
     #make the search happen
     submitted = st.form_submit_button('A* Search', on_click = do_path)
 
-for row in user_defined_map:
-    st.write(''.join(row))
+    render_map()
