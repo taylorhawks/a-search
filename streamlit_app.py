@@ -234,6 +234,8 @@ with st.form("Map Parameters"):
 
 st.header('Rendered Map')
 
+logging.info('Hello world')
+
 # if ~path_bool:
 render_map(user_defined_map)
 # else:
