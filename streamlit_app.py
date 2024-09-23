@@ -48,7 +48,7 @@ with st.form("Map Parameters"):
     
     heuristic = st.selectbox(
         label = 'heuristic',
-        option = heuristic_options,
+        option = HEURISTIC_OPTIONS,
         index = 1,
         key = 'heuristic',
         placeholder="Choose an option", 
