@@ -75,7 +75,7 @@ with st.form("Map Parameters"):
     # start_x = int(start[1].strip())
     # start_y = int(start[0].strip())
     
-    end = st.text_input("End Position (comma separated)", f"{WIDTH}, {HEIGHT}").split(",")
+    end = st.text_input("End Position (comma separated)", f"{WIDTH-1}, {HEIGHT-1}").split(",")
 
     # end_x = int(end[1].strip())
     # end_y = int(end[0].strip())
