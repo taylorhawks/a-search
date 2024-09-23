@@ -201,7 +201,7 @@ with st.form("Map Parameters"):
     for x, col in enumerate(columns):
         with col:
             for y in range(HEIGHT):
-                st.session_state.udm[y][x] = st.selectbox(
+                user_defined_map = st.selectbox(
                   label = f'({x},{y})', 
                   options = TERRAIN_OPTIONS, 
                   index = TERRAIN_OPTIONS.index(full_world[y][x]), 
@@ -213,6 +213,7 @@ with st.form("Map Parameters"):
                   disabled=False, 
                   label_visibility="visible"
                 )
+    st.session_state.udm = user_defined_map
     
     #make the search happen
     submitted = st.form_submit_button('A* Search', on_click = do_path)
