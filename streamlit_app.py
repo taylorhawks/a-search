@@ -54,8 +54,8 @@ full_world = [
 ['⛰', '⛰', '🌾', '🌾', '🌾', '🌾', '🌾', '🌾', '🌾', '🌾', '🌾', '🌾', '⛰', '⛰', '⛰', '⛰', '⛰', '🌾', '🌾', '🌾', '🌾', '⛰', '⛰', '⛰', '🌾', '🌾', '🌾']
 ]
 
-HEIGHT = len(full_map)
-WIDTH = len(full_map[0])
+HEIGHT = len(full_world)
+WIDTH = len(full_world[0])
 
 user_defined_map = [[None for x in range(WIDTH)] for y in range(HEIGHT)]
 
