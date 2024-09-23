@@ -182,8 +182,8 @@ def do_path():
     # render_map(user_defined_map)
 
 #function to show map
-def render_map():
-    for row in user_defined_map:
+def render_map(map):
+    for row in map:
         st.html('<div style="text-align: center">'+'  '.join(row)+'</div>')
 
 with st.form("Map Parameters"):
@@ -240,7 +240,7 @@ st.header('Rendered Map')
 # placeholder = st.empty()
 do_path()
 
-render_map()
+render_map(map_lines)
 
 # while True:
 #     with placeholder.container():
