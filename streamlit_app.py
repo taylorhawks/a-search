@@ -26,6 +26,8 @@ small_world = [
 
 user_defined_map = [[None for x in range(WIDTH)] for y in range(HEIGHT)]
 
+heuristic = None
+
 def render_map():
     for row in user_defined_map:
         st.write(''.join(row))
@@ -38,13 +40,13 @@ with st.form("Map Parameters"):
     #start and finish
     start = st.text_input("Starting Position (comma separated)", "0,0").split(",")
 
-    start_x = int(start[1].strip())
-    start_y = int(start[0].strip())
+    # start_x = int(start[1].strip())
+    # start_y = int(start[0].strip())
     
     end = st.text_input("End Position (comma separated)", f"{WIDTH}, {HEIGHT}").split(",")
 
-    end_x = int(end[1].strip())
-    end_y = int(end[0].strip())
+    # end_x = int(end[1].strip())
+    # end_y = int(end[0].strip())
     
     heuristic = st.selectbox(
         label = 'heuristic',
