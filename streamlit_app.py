@@ -240,7 +240,7 @@ st.header('Rendered Map')
 # placeholder = st.empty()
 # do_path()
 
-render_map(map_lines)
+render_map(st.session_state.map_lines)
 
 # while True:
 #     with placeholder.container():
