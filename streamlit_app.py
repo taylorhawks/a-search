@@ -66,7 +66,8 @@ with st.form("Map Parameters"):
                   options = TERRAIN_OPTIONS, 
                   index = TERRAIN_OPTIONS.index(small_world[y][x]), 
                   # format_func=special_internal_function, 
-                  key='_'.join([str(x),str(y)]), 
+                  # key='_'.join([str(x),str(y)]), 
+                  key = str(x) + str(y)
                   # help=None, 
                   # on_change=None, 
                   # args=None, 
