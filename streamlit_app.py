@@ -79,4 +79,4 @@ with st.form("Map Parameters"):
     #make the search happen
     submitted = st.form_submit_button('A* Search', on_click = do_path)
 
-    render_map()
+render_map()
