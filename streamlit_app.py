@@ -176,17 +176,14 @@ def render_map(map):
 
 #function to update path
 def do_path():
-    pass
-    # logging.info('Working on path.')
-    # # global path, user_defined_map, path_cost, path_bool
-    # global user_defined_map
-    # global path_bool
-    # global path_cost
-    # global path
-    # path = a_star_search(user_defined_map, start_coords, end_coords, COSTS, MOVES, heuristic_func)
-    # user_defined_map, path_cost = pretty_print_path(user_defined_map, path, start_coords, end_coords, COSTS)
-    # path_bool = True
-    # # st.write('AAAAAAAAAAAAAAAAAAAAAAAAAAAA')
+    global user_defined_map
+    global path_bool
+    global path_cost
+    global path
+    path = a_star_search(user_defined_map, start_coords, end_coords, COSTS, MOVES, heuristic_func)
+    user_defined_map, path_cost = pretty_print_path(user_defined_map, path, start_coords, end_coords, COSTS)
+    path_bool = True
+    # st.write('AAAAAAAAAAAAAAAAAAAAAAAAAAAA')
     # render_map(user_defined_map)
 
 
@@ -250,16 +247,4 @@ render_map(user_defined_map)
 #     print('test: map lines reached.')
 #     render_map(map_lines)
 
-#function to update path
-def do_path():
-    logging.info('Working on path.')
-    # global path, user_defined_map, path_cost, path_bool
-    global user_defined_map
-    global path_bool
-    global path_cost
-    global path
-    path = a_star_search(user_defined_map, start_coords, end_coords, COSTS, MOVES, heuristic_func)
-    user_defined_map, path_cost = pretty_print_path(user_defined_map, path, start_coords, end_coords, COSTS)
-    path_bool = True
-    # st.write('AAAAAAAAAAAAAAAAAAAAAAAAAAAA')
-    render_map(user_defined_map)
+
