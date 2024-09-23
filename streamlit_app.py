@@ -46,15 +46,15 @@ with st.form("Map Parameters"):
     end_x = int(end[1].strip())
     end_y = int(end[0].strip())
     
-    # heuristic = st.selectbox(
-    #     label = 'heuristic',
-    #     option = HEURISTIC_OPTIONS,
-    #     index = 1,
-    #     key = 'heuristic',
-    #     placeholder="Choose an option", 
-    #     disabled=False, 
-    #     label_visibility="visible"
-    # )
+    heuristic = st.selectbox(
+        label = 'heuristic',
+        option = HEURISTIC_OPTIONS,
+        index = 1,
+        key = 'heuristic',
+        placeholder="Choose an option", 
+        disabled=False, 
+        label_visibility="visible"
+    )
     
     #grid selection
     columns = st.columns(WIDTH)
