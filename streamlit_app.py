@@ -30,7 +30,7 @@ heuristic = None
 
 def render_map():
     for row in user_defined_map:
-        st.write(''.join(row))
+        st.html('<div style="text-align: center">'+''.join(row)+'</div>')
 
 def do_path():
     pass
