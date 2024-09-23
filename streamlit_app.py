@@ -28,12 +28,14 @@ user_defined_map = [[None for x in range(WIDTH)] for y in range(HEIGHT)]
 
 heuristic = None
 
-def render_map():
-    for row in user_defined_map:
+def render_map(map):
+    for row in map:
         st.html('<div style="text-align: center">'+''.join(row)+'</div>')
 
+path = False
+
 def do_path():
-    pass
+    path = True
 
 with st.form("Map Parameters"):
 
@@ -81,4 +83,7 @@ with st.form("Map Parameters"):
 
 st.header('Rendered Map')
 
-render_map()
+if path:
+    render_map(user_defined_map)
+else:
+    write('asdf)
