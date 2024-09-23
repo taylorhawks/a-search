@@ -171,6 +171,8 @@ map_lines = None
 path_cost = None
 path_bool = False
 
+heuristic_func = heuristic_next
+
 #function to update path
 def do_path():
     global path = a_star_search(user_defined_map, start_coords, end_coords, COSTS, MOVES, heuristic_func)
