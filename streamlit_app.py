@@ -67,10 +67,8 @@ with st.form("Map Parameters"):
                   index = TERRAIN_OPTIONS.index(small_world[y][x]), 
                   # format_func=special_internal_function, 
                   key = f'{x}_{y}',
-                  # help=None, 
-                  on_change=render_map(), 
-                  # args=None, 
-                  # kwargs=None, *, 
+                  on_change = None,
+                  help=None, 
                   placeholder="Choose an option", 
                   disabled=False, 
                   label_visibility="visible"
