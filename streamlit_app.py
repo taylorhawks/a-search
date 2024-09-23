@@ -242,10 +242,10 @@ placeholder = st.empty()
 
 render_map()
 
-while True:
-    with placeholder.container():
-        render_map()
-    placeholder.empty()
+# while True:
+#     with placeholder.container():
+#         render_map()
+#     placeholder.empty()
         
 
 # if ~path_bool
