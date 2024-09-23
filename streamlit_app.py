@@ -49,7 +49,11 @@ with st.form("Map Parameters"):
     heuristic = st.selectbox(
         label = 'heuristic',
         option = heuristic_options,
-        index = 1
+        index = 1,
+        key = 'heuristic'
+        placeholder="Choose an option", 
+      disabled=False, 
+      label_visibility="visible"
     )
     
     #grid selection
