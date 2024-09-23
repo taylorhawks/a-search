@@ -163,27 +163,27 @@ def pretty_print_path( world: List[List[str]], path: List[Tuple[int, int]], star
 
 # more global vars for search functionality
 path = None
-map_lines = user_defined_map
 path_cost = None
-path_bool = False
 
 heuristic_func = heuristic_next
 
 if 'map_lines' not in st.session_state:
-    st.session_state['map_lines'] = map_lines
+    st.session_state['map_lines'] = user_defined_map
+
+if 'path' not in st.session_state:
+    st.session_state['path'] = []
+
+if 'path_cost' not in st.session_state:
+    st.session_state['path_cost'] = 0
 
 
 #function to update path
 def do_path():
-    global map_lines
-    global path_bool
-    global path_cost
-    global path
-    path_bool = True
     path = a_star_search(user_defined_map, start_coords, end_coords, COSTS, MOVES, heuristic_func)
     map_lines, path_cost = pretty_print_path(user_defined_map, path, start_coords, end_coords, COSTS)
     st.session_state.map_lines = map_lines
-    # render_map(user_defined_map)
+    st.session_state.path = path
+    st.session_state.path_cost = path_cost
 
 #function to show map
 def render_map(map):
@@ -239,23 +239,7 @@ with st.form("Map Parameters"):
     submitted = st.form_submit_button('A* Search', on_click = do_path)
 
 st.header('Rendered Map')
-
-
-# placeholder = st.empty()
-# do_path()
-
+st.write('Submit the form to perform A* search for the given map and parameters')
+st.write(f'The path cost is {st.session_state.path_cost}')
+st.write(f'The found path is {st.session_state.path}')
 render_map(st.session_state.map_lines)
-
-# while True:
-#     with placeholder.container():
-#         render_map()
-#     placeholder.empty()
-        
-
-# if ~path_bool
-# render_map(user_defined_map)
-# else:
-#     print('test: map lines reached.')
-#     render_map(map_lines)
-
-
