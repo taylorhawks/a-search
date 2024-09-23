@@ -155,7 +155,8 @@ if 'udm' not in st.session_state:
 
 #function to update path
 def do_path():
-    path = a_star_search(st.session_state.udm, start_coords, end_coords, COSTS, MOVES, heuristic_func)
+    udm = st.session_state.udm
+    path = a_star_search(udm, start_coords, end_coords, COSTS, MOVES, heuristic_func)
     map_lines, path_cost = pretty_print_path(st.session_state.udm, path, start_coords, end_coords, COSTS)
     st.session_state.map_lines = map_lines
     st.session_state.path = path
