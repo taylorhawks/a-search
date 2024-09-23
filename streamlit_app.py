@@ -238,6 +238,8 @@ st.header('Rendered Map')
 
 logging.info('Hello world')
 
+render_map(user_defined_map)
+
 # if ~path_bool
 # render_map(user_defined_map)
 # else:
