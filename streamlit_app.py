@@ -52,8 +52,8 @@ with st.form("Map Parameters"):
         index = 1,
         key = 'heuristic',
         placeholder="Choose an option", 
-      disabled=False, 
-      label_visibility="visible"
+        disabled=False, 
+        label_visibility="visible"
     )
     
     #grid selection
