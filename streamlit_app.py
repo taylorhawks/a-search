@@ -175,6 +175,7 @@ heuristic_func = heuristic_next
 
 #function to update path
 def do_path():
+    print('Working on path.')
     global path, user_defined_map, path_cost, path_bool
     path = a_star_search(user_defined_map, start_coords, end_coords, COSTS, MOVES, heuristic_func)
     user_defined_map, path_cost = pretty_print_path(user_defined_map, path, start_coords, end_coords, COSTS)
