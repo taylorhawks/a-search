@@ -236,7 +236,6 @@ with st.form("Map Parameters"):
 
 st.header('Rendered Map')
 
-logging.info('Hello world')
 
 placeholder = st.empty()
 
