@@ -50,10 +50,10 @@ with st.form("Map Parameters"):
     for x, col in enumerate(columns):
         with col:
             for y in range(HEIGHT):
-                user_defined_map[x][y] = st.selectbox(
+                user_defined_map[y][x] = st.selectbox(
                   label = f'({x},{y})', 
                   options = TERRAIN_OPTIONS, 
-                  index = TERRAIN_OPTIONS.index(small_world[x][y]), 
+                  index = TERRAIN_OPTIONS.index(small_world[y][x]), 
                   # format_func=special_internal_function, 
                   key=str(x)+str(y), 
                   # help=None, 
