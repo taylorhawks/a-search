@@ -150,14 +150,14 @@ if 'path' not in st.session_state:
 if 'path_cost' not in st.session_state:
     st.session_state['path_cost'] = 0
 
-# if 'heuristic_func' not in st.session_state:
-#     st.session_state['heuristic_func'] = None
+if 'udm' not in st.session_state:
+    st.session_state['udm'] = user_defined_map
 
 
 #function to update path
 def do_path():
-    path = a_star_search(user_defined_map, start_coords, end_coords, COSTS, MOVES, heuristic_func)
-    map_lines, path_cost = pretty_print_path(user_defined_map, path, start_coords, end_coords, COSTS)
+    path = a_star_search(st.session_state.udm, start_coords, end_coords, COSTS, MOVES, heuristic_func)
+    map_lines, path_cost = pretty_print_path(st.session_state.udm, path, start_coords, end_coords, COSTS)
     st.session_state.map_lines = map_lines
     st.session_state.path = path
     st.session_state.path_cost = path_cost
@@ -201,7 +201,7 @@ with st.form("Map Parameters"):
     for x, col in enumerate(columns):
         with col:
             for y in range(HEIGHT):
-                user_defined_map[y][x] = st.selectbox(
+                st.session_state.udm[y][x] = st.selectbox(
                   label = f'({x},{y})', 
                   options = TERRAIN_OPTIONS, 
                   index = TERRAIN_OPTIONS.index(full_world[y][x]), 
