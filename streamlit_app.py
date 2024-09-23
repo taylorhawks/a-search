@@ -83,7 +83,4 @@ with st.form("Map Parameters"):
 
 st.header('Rendered Map')
 
-if path:
-    render_map(user_defined_map)
-else:
-    write('asdf')
+render_map(user_defined_map)
