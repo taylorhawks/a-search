@@ -16,14 +16,14 @@ TERRAIN_OPTIONS = [ '🌾','🌲','⛰','🐊','🌋']
 HEURISTIC_OPTIONS = ['Next Move', 'Manhattan Distance', 'Euclidean Distance']
 
 full_world = [
-['🌾', '🌾', '🌾', '🌾', '🌾', '🌲', '🌲', '🌲'],
-['🐊', '🐊', '🌾', '🌾', '🌾', '🌾', '🌾', '🌲'],
-['🐊', '🐊', '🌾', '🌾', '🌋', '🌋', '🌲', '🌲'],
-['🌾', '🌾', '🌾', '🌾', '⛰', '🌋', '🌋', '🌋'],
-['🌾', '🌾', '🌾', '⛰', '⛰', '⛰', '🌋', '🌲'],
-['🌾', '⛰', '⛰', '⛰', '🌋', '⛰', '⛰', '⛰'],
-['🌾', '⛰', '🌲', '🌋', '🌋', '⛰', '⛰', '🌾'],
-['🌾', '🌾', '🌲', '🌲', '🌲', '🌲', '🌾', '🌾'],
+    ['🌾', '🌾', '🌾', '🌾', '🌾', '🌲', '🌲', '🌲'],
+    ['🐊', '🐊', '🌾', '🌾', '🌾', '🌾', '🌾', '🌲'],
+    ['🐊', '🐊', '🌾', '🌾', '🌋', '🌋', '🌲', '🌲'],
+    ['🌾', '🌾', '🌾', '🌾', '⛰', '🌋', '🌋', '🌋'],
+    ['🌾', '🌾', '🌾', '⛰', '⛰', '⛰', '🌋', '🌲'],
+    ['🌾', '⛰', '⛰', '⛰', '🌋', '⛰', '⛰', '⛰'],
+    ['🌾', '⛰', '🌲', '🌋', '🌋', '⛰', '⛰', '🌾'],
+    ['🌾', '🌾', '🌲', '🌲', '🌲', '🌲', '🌾', '🌾'],
 ]
 
 #global vars for a* search
@@ -150,8 +150,8 @@ if 'path' not in st.session_state:
 if 'path_cost' not in st.session_state:
     st.session_state['path_cost'] = 0
 
-if 'heuristic_func' not in st.session_state:
-    st.session_state['heuristic_func'] = None
+# if 'heuristic_func' not in st.session_state:
+#     st.session_state['heuristic_func'] = None
 
 
 #function to update path
@@ -194,7 +194,7 @@ with st.form("Map Parameters"):
         label_visibility="visible"
     )
 
-    st.session_state.heuristic_func = heuristic_functions[heuristic]
+    heuristic_func = heuristic_functions[heuristic]
     
     #grid selection
     columns = st.columns(WIDTH)
