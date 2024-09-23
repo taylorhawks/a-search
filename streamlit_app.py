@@ -67,5 +67,6 @@ with st.form("Map Parameters"):
     
     #make the search happen
     submitted = st.form_submit_button('A* Search', on_click = do_path)
-    
-st.write(*user_defined_map)
+
+for row in user_defined_map:
+    st.write(''.join(row))
