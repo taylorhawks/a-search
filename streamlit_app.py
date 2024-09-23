@@ -237,7 +237,8 @@ with st.form("Map Parameters"):
 st.header('Rendered Map')
 
 
-placeholder = st.empty()
+# placeholder = st.empty()
+do_path()
 
 render_map()
 
