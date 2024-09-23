@@ -177,7 +177,7 @@ heuristic_func = heuristic_next
 def do_path():
     global path, map_lines, path_cost, path_bool
     path = a_star_search(user_defined_map, start_coords, end_coords, COSTS, MOVES, heuristic_func)
-    map_lines, path_cost = pretty_print_path(user_defined_map, path, start_coords, end_coords, COSTS)
+    user_defined_map, path_cost = pretty_print_path(user_defined_map, path, start_coords, end_coords, COSTS)
     path_bool = True
     
 
@@ -231,8 +231,8 @@ with st.form("Map Parameters"):
 
 st.header('Rendered Map')
 
-if ~path_bool:
-    render_map(user_defined_map)
-else:
-    print('test: map lines reached.')
-    render_map(map_lines)
+# if ~path_bool:
+render_map(user_defined_map)
+# else:
+#     print('test: map lines reached.')
+#     render_map(map_lines)
