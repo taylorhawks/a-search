@@ -149,15 +149,14 @@ if 'path' not in st.session_state:
 if 'path_cost' not in st.session_state:
     st.session_state['path_cost'] = 0
 
-if 'udm' not in st.session_state:
-    st.session_state['udm'] = user_defined_map
+# if 'udm' not in st.session_state:
+#     st.session_state['udm'] = user_defined_map
 
 
 #function to update path
 def do_path():
-    udm = st.session_state.udm
     path = a_star_search(udm, start_coords, end_coords, COSTS, MOVES, heuristic_func)
-    map_lines, path_cost = pretty_print_path(st.session_state.udm, path, start_coords, end_coords, COSTS)
+    map_lines, path_cost = pretty_print_path(user_defined_map, path, start_coords, end_coords, COSTS)
     st.session_state.map_lines = map_lines
     st.session_state.path = path
     st.session_state.path_cost = path_cost
@@ -213,7 +212,7 @@ with st.form("Map Parameters"):
                   disabled=False, 
                   label_visibility="visible"
                 )
-    st.session_state.udm = user_defined_map
+                map_lines[y][x] = user_defined_map[y][x]
     
     #make the search happen
     submitted = st.form_submit_button(
