@@ -216,7 +216,10 @@ with st.form("Map Parameters"):
     st.session_state.udm = user_defined_map
     
     #make the search happen
-    submitted = st.form_submit_button('A* Search', on_click = do_path)
+    submitted = st.form_submit_button(
+        'A* Search',
+        # on_click = do_path
+    )
 
 st.header('Rendered Map')
 st.write('Submit the form to perform A* search for the given map and parameters')
