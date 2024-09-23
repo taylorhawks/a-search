@@ -29,7 +29,6 @@ full_world = [
 #global vars for a* search
 user_defined_map = [[None for x in range(WIDTH)] for y in range(HEIGHT)]
 heuristic = None
-path = False
 
 #############
 # FUNCTIONS #
