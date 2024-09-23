@@ -238,7 +238,7 @@ st.header('Rendered Map')
 
 
 # placeholder = st.empty()
-do_path()
+# do_path()
 
 render_map(map_lines)
 
