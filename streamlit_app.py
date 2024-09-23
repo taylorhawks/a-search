@@ -238,7 +238,13 @@ st.header('Rendered Map')
 
 logging.info('Hello world')
 
-render_map()
+placeholder = st.empty()
+
+while True:
+    with placeholder.container():
+        render_map()
+    placeholder.empty()
+        
 
 # if ~path_bool
 # render_map(user_defined_map)
