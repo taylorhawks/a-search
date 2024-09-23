@@ -169,6 +169,9 @@ path_bool = False
 
 heuristic_func = heuristic_next
 
+if 'map_lines' not in st.session_state:
+    st.session_state['map_lines'] = map_lines
+
 
 #function to update path
 def do_path():
@@ -179,6 +182,7 @@ def do_path():
     path_bool = True
     path = a_star_search(user_defined_map, start_coords, end_coords, COSTS, MOVES, heuristic_func)
     map_lines, path_cost = pretty_print_path(user_defined_map, path, start_coords, end_coords, COSTS)
+    st.session_state.map_lines = map_lines
     # render_map(user_defined_map)
 
 #function to show map
