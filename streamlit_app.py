@@ -183,11 +183,9 @@ def do_path():
     path = a_star_search(user_defined_map, start_coords, end_coords, COSTS, MOVES, heuristic_func)
     user_defined_map, path_cost = pretty_print_path(user_defined_map, path, start_coords, end_coords, COSTS)
     path_bool = True
-    # st.write('AAAAAAAAAAAAAAAAAAAAAAAAAAAA')
     # render_map(user_defined_map)
 
-
-    
+do_path()
 
 with st.form("Map Parameters"):
 
@@ -241,8 +239,8 @@ st.header('Rendered Map')
 
 logging.info('Hello world')
 
-# if ~path_bool:
-render_map(user_defined_map)
+# if ~path_bool
+# render_map(user_defined_map)
 # else:
 #     print('test: map lines reached.')
 #     render_map(map_lines)
