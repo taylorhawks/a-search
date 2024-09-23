@@ -234,4 +234,5 @@ st.header('Rendered Map')
 if ~path_bool:
     render_map(user_defined_map)
 else:
+    print('test: map lines reached.')
     render_map(map_lines)
