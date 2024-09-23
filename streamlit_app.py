@@ -163,29 +163,27 @@ def pretty_print_path( world: List[List[str]], path: List[Tuple[int, int]], star
 
 # more global vars for search functionality
 path = None
-map_lines = None
+map_lines = user_defined_map
 path_cost = None
 path_bool = False
 
 heuristic_func = heuristic_next
 
 #function to show map
-def render_map(map):
-    for row in map:
-        st.html('<div style="text-align: center">'+' '.join(row)+'</div>')
+def render_map():
+    for row in user_defined_map if ~path_bool else map_lines:
+        st.html('<div style="text-align: center">'+'  '.join(row)+'</div>')
 
 #function to update path
 def do_path():
+    path_bool = True
     global user_defined_map
     global path_bool
     global path_cost
     global path
     path = a_star_search(user_defined_map, start_coords, end_coords, COSTS, MOVES, heuristic_func)
-    user_defined_map, path_cost = pretty_print_path(user_defined_map, path, start_coords, end_coords, COSTS)
-    path_bool = True
+    map_lines, path_cost = pretty_print_path(user_defined_map, path, start_coords, end_coords, COSTS)
     # render_map(user_defined_map)
-
-do_path()
 
 with st.form("Map Parameters"):
 
