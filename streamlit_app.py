@@ -185,7 +185,8 @@ def do_path():
     path = a_star_search(user_defined_map, start_coords, end_coords, COSTS, MOVES, heuristic_func)
     user_defined_map, path_cost = pretty_print_path(user_defined_map, path, start_coords, end_coords, COSTS)
     path_bool = True
-    st.write('AAAAAAAAAAAAAAAAAAAAAAAAAAAA')
+    # st.write('AAAAAAAAAAAAAAAAAAAAAAAAAAAA')
+    render_map(user_defined_map)
 
 
     
