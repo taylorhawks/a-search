@@ -4,7 +4,7 @@ from typing import List, Tuple, Dict, Callable
 
 st.title('A* Search')
 st.header('Taylor Hawks')
-
+st.write('Edit the map and search parameters, then see the changes in the map below.')
 
 
 #global constants
@@ -29,7 +29,6 @@ full_world = [
 #global vars for a* search
 user_defined_map = [[None for x in range(WIDTH)] for y in range(HEIGHT)]
 heuristic = None
-heuristic_functions = dict()
 path = False
 
 #############
@@ -66,6 +65,13 @@ def heuristic_manhattan(loc: Tuple[int,int], world: List[List[str]], costs: Dict
 #heuristic function: Euclidean distance
 def heuristic_euclidean(loc: Tuple[int,int], world: List[List[str]], costs: Dict[str,int], goal: Tuple[int,int])->List[int]:
     return ((x-loc[0])**2+abs(y-loc[1])**2)**0.5
+
+
+heuristic_functions = {
+    'Next Move' : heuristic_next,
+    'Manhattan Distance' : heuristic_manhattan,
+    'Euclidean Distance' : heuristic_euclidean,
+}
 
 #frontier function - take highest priority candidate
 def next_from_frontier(frontier: dict[int,List[Tuple[int,int]]]) -> Tuple[Tuple[int,int], dict[int,List[Tuple[int,int]]]]:
@@ -135,8 +141,6 @@ def pretty_print_path( world: List[List[str]], path: List[Tuple[int, int]], star
 path = None
 path_cost = None
 
-heuristic_func = heuristic_next
-
 if 'map_lines' not in st.session_state:
     st.session_state['map_lines'] = user_defined_map
 
@@ -145,6 +149,9 @@ if 'path' not in st.session_state:
 
 if 'path_cost' not in st.session_state:
     st.session_state['path_cost'] = 0
+
+if 'heuristic_func' not in st.session_state:
+    st.session_state['heuristic_func'] = None
 
 
 #function to update path
@@ -186,6 +193,8 @@ with st.form("Map Parameters"):
         disabled=False, 
         label_visibility="visible"
     )
+
+    st.session_state.heuristic_func = heuristic_functions[heuristic]
     
     #grid selection
     columns = st.columns(WIDTH)
