@@ -178,7 +178,8 @@ heuristic_func = heuristic_next
 def do_path():
     
     logging.info('Working on path.')
-    global path, user_defined_map, path_cost, path_bool
+    # global path, user_defined_map, path_cost, path_bool
+    global user_defined_map
     path = a_star_search(user_defined_map, start_coords, end_coords, COSTS, MOVES, heuristic_func)
     user_defined_map, path_cost = pretty_print_path(user_defined_map, path, start_coords, end_coords, COSTS)
     path_bool = True
