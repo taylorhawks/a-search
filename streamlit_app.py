@@ -46,15 +46,15 @@ with st.form("Map Parameters"):
     end_x = int(end[1].strip())
     end_y = int(end[0].strip())
     
-    heuristic = st.selectbox(
-        label = 'heuristic',
-        option = HEURISTIC_OPTIONS,
-        index = 1,
-        key = 'heuristic',
-        placeholder="Choose an option", 
-        disabled=False, 
-        label_visibility="visible"
-    )
+    # heuristic = st.selectbox(
+    #     label = 'heuristic',
+    #     option = HEURISTIC_OPTIONS,
+    #     index = 1,
+    #     key = 'heuristic',
+    #     placeholder="Choose an option", 
+    #     disabled=False, 
+    #     label_visibility="visible"
+    # )
     
     #grid selection
     columns = st.columns(WIDTH)
@@ -80,4 +80,4 @@ with st.form("Map Parameters"):
     #make the search happen
     submitted = st.form_submit_button('A* Search', on_click = do_path)
 
-# render_map()
+render_map()
