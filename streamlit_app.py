@@ -169,6 +169,11 @@ path_bool = False
 
 heuristic_func = heuristic_next
 
+#function to show map
+def render_map(map):
+    for row in map:
+        st.html('<div style="text-align: center">'+' '.join(row)+'</div>')
+
 #function to update path
 def do_path():
     logging.info('Working on path.')
@@ -180,11 +185,9 @@ def do_path():
     path = a_star_search(user_defined_map, start_coords, end_coords, COSTS, MOVES, heuristic_func)
     user_defined_map, path_cost = pretty_print_path(user_defined_map, path, start_coords, end_coords, COSTS)
     path_bool = True
+    st.write('AAAAAAAAAAAAAAAAAAAAAAAAAAAA')
 
-#function to show map
-def render_map(map):
-    for row in map:
-        st.html('<div style="text-align: center">'+' '.join(row)+'</div>')
+
     
 
 with st.form("Map Parameters"):
