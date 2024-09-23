@@ -4,8 +4,8 @@ from typing import List, Tuple, Dict, Callable
 st.title('A* Search')
 st.header('Taylor Hawks')
 
-WIDTH = 10
-HEIGHT = 10
+WIDTH = 8
+HEIGHT = 8
 
 #global vars
 COSTS  = { '🌾': 1, '🌲': 3, '⛰': 5, '🐊': 7}
