@@ -212,7 +212,7 @@ with st.form("Map Parameters"):
                   disabled=False, 
                   label_visibility="visible"
                 )
-                map_lines[y][x] = user_defined_map[y][x]
+                st.session_state.map_lines[y][x] = user_defined_map[y][x]
     
     #make the search happen
     submitted = st.form_submit_button(
