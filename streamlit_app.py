@@ -4,10 +4,11 @@ from typing import List, Tuple, Dict, Callable
 st.title('A* Search')
 st.header('Taylor Hawks')
 
+
+
+#global constants
 WIDTH = 8
 HEIGHT = 8
-
-#global vars
 COSTS  = { '🌾': 1, '🌲': 3, '⛰': 5, '🐊': 7}
 MOVES = [(-1,0),(0,-1),(1,0),(0,1)]
 TERRAIN_OPTIONS = [ '🌾','🌲','⛰','🐊','🌋']
@@ -54,16 +55,24 @@ full_world = [
 ['⛰', '⛰', '🌾', '🌾', '🌾', '🌾', '🌾', '🌾', '🌾', '🌾', '🌾', '🌾', '⛰', '⛰', '⛰', '⛰', '⛰', '🌾', '🌾', '🌾', '🌾', '⛰', '⛰', '⛰', '🌾', '🌾', '🌾']
 ]
 
+#global vars for a* search
 user_defined_map = [[None for x in range(WIDTH)] for y in range(HEIGHT)]
-
 heuristic = None
-
-def render_map(map):
-    for row in map:
-        st.html('<div style="text-align: center">'+''.join(row)+'</div>')
-
+heuristic_functions = dict()
 path = False
 
+#############
+# FUNCTIONS #
+#############
+
+#function to show map
+def render_map(map):
+    for row in map:
+        st.html('<div style="text-align: center">'+' '.join(row)+'</div>')
+
+
+
+#function to update path
 def do_path():
     path = True
 
