@@ -10,7 +10,7 @@ HEIGHT = 7
 #global vars
 COSTS  = { '🌾': 1, '🌲': 3, '⛰': 5, '🐊': 7}
 MOVES = [(-1,0),(0,-1),(1,0),(0,1)]
-TERRAIN_OPTIONS = list(COSTS.keys())
+TERRAIN_OPTIONS = [ '🌾','🌲','⛰','🐊','🌋']
 HEURISTIC_OPTIONS = ['Next Move', 'Manhattan Distance', 'Euclidean Distance']
 
 #small world is the default map
