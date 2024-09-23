@@ -231,7 +231,7 @@ with st.form("Map Parameters"):
 
 st.header('Rendered Map')
 
-if !path_bool:
+if ~path_bool:
     render_map(user_defined_map)
 else:
     render_map(map_lines)
