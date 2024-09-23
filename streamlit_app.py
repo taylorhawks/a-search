@@ -81,13 +81,13 @@ with st.form("Map Parameters"):
     #start and finish
     start = st.text_input("Starting Position (comma separated)", "0,0").split(",")
 
-    # start_x = int(start[1].strip())
-    # start_y = int(start[0].strip())
+    start_x = int(start[0].strip())
+    start_y = int(start[1].strip())
     
     end = st.text_input("End Position (comma separated)", f"{WIDTH-1}, {HEIGHT-1}").split(",")
 
-    # end_x = int(end[1].strip())
-    # end_y = int(end[0].strip())
+    end_x = int(end[0].strip())
+    end_y = int(end[1].strip())
     
     heuristic = st.selectbox(
         label = 'heuristic',
