@@ -1,5 +1,6 @@
 import streamlit as st
 import logging
+import time
 from typing import List, Tuple, Dict, Callable
 
 st.title('A* Search')
@@ -163,6 +164,7 @@ def do_path():
 
 #function to show map
 def render_map(map):
+    time.sleep(3)
     for row in map:
         st.html('<div style="text-align: center">'+'  '.join(row)+'</div>')
 
