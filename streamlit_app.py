@@ -156,6 +156,7 @@ if 'path_cost' not in st.session_state:
 
 #function to update path
 def do_path():
+    time.sleep(1)
     st.session_state.path = a_star_search(user_defined_map, start_coords, end_coords, COSTS, MOVES, heuristic_func)
     st.session_state.map_lines, st.session_state.path_cost = pretty_print_path(user_defined_map, st.session_state.path, start_coords, end_coords, COSTS)
 
