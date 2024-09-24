@@ -14,7 +14,8 @@ MOVES = [(-1,0),(0,-1),(1,0),(0,1)]
 TERRAIN_OPTIONS = [ '🌾','🌲','⛰','🐊','🌋']
 HEURISTIC_OPTIONS = ['Next Move', 'Manhattan Distance', 'Euclidean Distance']
 
-#less than the full world used for 
+#less than the full world used for the programming assignment
+#wanted to do something where dropdowns would fit on the screen
 full_world = [
     ['🌾', '🌾', '🌾', '🌾', '🌾', '🌲', '🌲', '🌲'],
     ['🐊', '🐊', '🌾', '🌾', '🌾', '🌾', '🌾', '🌲'],
@@ -159,6 +160,10 @@ def do_path():
 def render_map(map):
     for row in map:
         st.html('<div style="text-align: center">'+'  '.join(row)+'</div>')
+
+########
+# FORM #
+########
 
 #form to contain all the user-controlled parameters
 #these variables don't need to be controlled by the session_state, as they're updated automatically upon form submission
