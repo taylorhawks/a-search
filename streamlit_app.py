@@ -150,8 +150,8 @@ if 'path' not in st.session_state:
 if 'path_cost' not in st.session_state:
     st.session_state['path_cost'] = 0
 
-# if 'udm' not in st.session_state:
-#     st.session_state['udm'] = user_defined_map
+# if 'path_bool' not in st.session_state:
+#     st.session_state['path_bool'] = False
 
 
 #function to update path
@@ -217,6 +217,8 @@ with st.form("Map Parameters"):
         'A* Search',
         on_click = do_path
     )
+
+do_path()
 
 st.header('Rendered Map')
 st.write('Submit the form to perform A* search for the given map and parameters')
