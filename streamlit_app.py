@@ -218,6 +218,7 @@ with st.form("Map Parameters"):
         on_click = do_path
     )
 
+# run this once - there are errors otherwise, such as needing to submit the form twice.
 do_path()
 
 st.header('Rendered Map')
