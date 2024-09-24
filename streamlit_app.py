@@ -224,7 +224,7 @@ with st.form("Map Parameters"):
 do_path()
 
 st.header('Rendered Map')
-st.write('Submit the form to perform A* search for the given map and parameters')
+st.write('Submit the form to perform A* search for the given map and parameters.')
 st.write(f'The found path is {st.session_state.path}.')
 st.write(f'The path cost is {st.session_state.path_cost}.')
 render_map(st.session_state.map_lines)
