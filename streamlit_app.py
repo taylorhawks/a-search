@@ -1,6 +1,4 @@
 import streamlit as st
-import logging
-import time
 from typing import List, Tuple, Dict, Callable
 
 st.title('A* Search')
@@ -16,6 +14,7 @@ MOVES = [(-1,0),(0,-1),(1,0),(0,1)]
 TERRAIN_OPTIONS = [ '🌾','🌲','⛰','🐊','🌋']
 HEURISTIC_OPTIONS = ['Next Move', 'Manhattan Distance', 'Euclidean Distance']
 
+#less than the full world used for 
 full_world = [
     ['🌾', '🌾', '🌾', '🌾', '🌾', '🌲', '🌲', '🌲'],
     ['🐊', '🐊', '🌾', '🌾', '🌾', '🌾', '🌾', '🌲'],
@@ -29,7 +28,6 @@ full_world = [
 
 #global vars for a* search
 user_defined_map = [[None for x in range(WIDTH)] for y in range(HEIGHT)]
-heuristic = None
 
 #############
 # FUNCTIONS #
@@ -53,7 +51,6 @@ def step_cost(loc: Tuple[int,int], world: List[List[str]], costs: Dict[str,int])
     return costs[world[loc[0]][loc[1]]]
 
 
-
 #heuristic function: Next move
 def heuristic_next(loc: Tuple[int,int], world: List[List[str]], costs: Dict[str,int], goal: Tuple[int,int])->List[int]:
     return 0 if loc==goal else step_cost(loc,world,costs)
@@ -66,14 +63,14 @@ def heuristic_manhattan(loc: Tuple[int,int], world: List[List[str]], costs: Dict
 def heuristic_euclidean(loc: Tuple[int,int], world: List[List[str]], costs: Dict[str,int], goal: Tuple[int,int])->List[int]:
     return ((x-loc[0])**2+abs(y-loc[1])**2)**0.5
 
-
+#heuristic function dictionary to allow access to all functions through dropdowns
 heuristic_functions = {
     'Next Move' : heuristic_next,
     'Manhattan Distance' : heuristic_manhattan,
     'Euclidean Distance' : heuristic_euclidean,
 }
 
-#frontier function - take highest priority candidate
+#frontier function - take highest priority candidate - from project 1
 def next_from_frontier(frontier: dict[int,List[Tuple[int,int]]]) -> Tuple[Tuple[int,int], dict[int,List[Tuple[int,int]]]]:
     frontier_key = min(frontier.keys())
     current_state_queue = frontier[frontier_key]
@@ -83,14 +80,14 @@ def next_from_frontier(frontier: dict[int,List[Tuple[int,int]]]) -> Tuple[Tuple[
         del frontier[frontier_key]
     return current_state, frontier
 
-#update frontier
+#update frontier - from project 1
 def update_frontier(frontier: dict[int,List[Tuple[int,int]]], node: Tuple[int,int], cost: int) -> dict[int,List[Tuple[int,int]]]:
     if cost in frontier.keys():
         frontier[cost].append(node)
     else:
         frontier[cost] = [node]
 
-#search function
+#search function - from project 1
 def a_star_search(world: List[List[str]], start: Tuple[int, int], goal: Tuple[int, int], costs: Dict[str, int], 
                   moves: List[Tuple[int, int]], heuristic: Callable) -> List[Tuple[int, int]]:
     paths = {start:{'cost':0,'path':[]}}
@@ -112,6 +109,7 @@ def a_star_search(world: List[List[str]], start: Tuple[int, int], goal: Tuple[in
         explored.append(current_state)
     return paths[current_state]['path']
 
+#map path - get the path and return the values to print as arrow emojis
 def map_path(start: Tuple[int, int], path: List[Tuple[int, int]]) -> Dict[Tuple[int,int],str]:
     path_coordinates = [start]
     print_path = {}
@@ -122,6 +120,7 @@ def map_path(start: Tuple[int, int], path: List[Tuple[int, int]]) -> Dict[Tuple[
     print_path[path_coordinates[-1]] = '❓'
     return print_path
 
+#pretty print path - this now returns the map to be rendered, along with the total cost, which was returned in the original function from project 1
 def pretty_print_path( world: List[List[str]], path: List[Tuple[int, int]], start: Tuple[int, int], goal: Tuple[int, int], costs: Dict[str, int]) -> int:
     map_lines = []
     print_path = map_path(start, path)
@@ -137,10 +136,8 @@ def pretty_print_path( world: List[List[str]], path: List[Tuple[int, int]], star
         map_lines.append(line) #changed from print
     return map_lines, sum([step_cost(loc,world,costs) for loc in print_path.keys() if loc != start])
 
-# more global vars for search functionality
-path = None
-path_cost = None
-
+# session state variables - the advantage of using these is that the rendered values update automatically,
+# without having to call out to update global variables.
 if 'map_lines' not in st.session_state:
     st.session_state['map_lines'] = user_defined_map
 
@@ -150,20 +147,21 @@ if 'path' not in st.session_state:
 if 'path_cost' not in st.session_state:
     st.session_state['path_cost'] = 0
 
-# if 'path_bool' not in st.session_state:
-#     st.session_state['path_bool'] = False
-
-
 #function to update path
+#this function is called when the form is submitted
 def do_path():
     st.session_state.path = a_star_search(user_defined_map, start_coords, end_coords, COSTS, MOVES, heuristic_func)
     st.session_state.map_lines, st.session_state.path_cost = pretty_print_path(user_defined_map, st.session_state.path, start_coords, end_coords, COSTS)
 
-#function to show map
+#function to show map at the bottom of the page
+#uses html to center-align the text
+#found this resource online: https://discuss.streamlit.io/t/justifying-or-centering-text-on-streamlit/11564
 def render_map(map):
     for row in map:
         st.html('<div style="text-align: center">'+'  '.join(row)+'</div>')
 
+#form to contain all the user-controlled parameters
+#these variables don't need to be controlled by the session_state, as they're updated automatically upon form submission
 with st.form("Map Parameters"):
 
     #start and finish
@@ -191,6 +189,7 @@ with st.form("Map Parameters"):
         label_visibility="visible"
     )
 
+    #grab the correct h(x) for A* Search
     heuristic_func = heuristic_functions[heuristic]
     
     #grid selection
@@ -202,7 +201,6 @@ with st.form("Map Parameters"):
                   label = f'({x},{y})', 
                   options = TERRAIN_OPTIONS, 
                   index = TERRAIN_OPTIONS.index(full_world[y][x]), 
-                  # format_func=special_internal_function, 
                   key = f'{x}_{y}',
                   on_change = None,
                   help=None, 
@@ -210,7 +208,6 @@ with st.form("Map Parameters"):
                   disabled=False, 
                   label_visibility="visible"
                 )
-                # st.session_state.map_lines[y][x] = user_defined_map[y][x]
     
     #make the search happen
     submitted = st.form_submit_button(
@@ -218,7 +215,7 @@ with st.form("Map Parameters"):
         on_click = do_path
     )
 
-# run this once - there are errors otherwise, such as needing to submit the form twice.
+# run this once - there are errors otherwise, such as needing to submit the form twice, if only showing a blank map at first.
 do_path()
 
 st.header('Rendered Map')
